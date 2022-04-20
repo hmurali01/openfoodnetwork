@@ -53,4 +53,17 @@ describe "Taxonomies" do
       expect(page).to have_content("sports 99")
     end
   end
+  
+  context "rename" do 
+    it "should allow an admin to rename a taxon in taxonomy tree" do
+      create(:taxonomy)
+      click_link "Taxonomies"
+      need to figure out how to add a taxon (i dont know if create does this)
+      within_row(2) { find(".icon-rename").click } //i feel like row 1 might be for the whole tree, so maybe row 2 instead?
+      fill_in "taxonomy_name", with: "renamed"
+      click_button "Update"
+      click_link "Taxonomies" //need to get to the page with the taxons
+      expect(page).to have_content("sports 99")
+      end
+    end
 end
